@@ -27,4 +27,4 @@ RUN php artisan config:cache && php artisan route:cache && php artisan view:cach
 EXPOSE 8000
 
 # Start Laravel server
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
