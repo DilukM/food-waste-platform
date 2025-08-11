@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -6,52 +6,33 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev \
     libpq-dev \
-    && docker-php-ext-install pdo pdo_pgsql zip bcmath \
-    && a2enmod rewrite
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip bcmath
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /var/www/html
+WORKDIR /var/www
 
-# Copy composer files first (for better caching)
-COPY composer.json composer.lock ./
-
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-scripts
-
-# Copy application files
+# Copy project files
 COPY . .
 
-# Set up Laravel directories and permissions
-RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views \
-    && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader
 
-# Run composer scripts
-RUN composer dump-autoload --optimize
+# Cache Laravel config
+RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
-# Create a simple debug endpoint
-RUN echo '<?php phpinfo(); ?>' > public/info.php \
-    && echo '<?php' > public/debug.php \
-    && echo 'echo "Laravel Debug Info:<br>";' >> public/debug.php \
-    && echo 'echo "PHP Version: " . PHP_VERSION . "<br>";' >> public/debug.php \
-    && echo 'echo "Environment: " . ($_ENV["APP_ENV"] ?? "NOT SET") . "<br>";' >> public/debug.php \
-    && echo 'echo "App Key: " . (($_ENV["APP_KEY"] ?? false) ? "SET" : "NOT SET") . "<br>";' >> public/debug.php \
-    && echo 'echo "Database Host: " . ($_ENV["DB_HOST"] ?? "NOT SET") . "<br>";' >> public/debug.php \
-    && echo '?>' >> public/debug.php
+RUN chmod -R 775 storage bootstrap/cache
 
-# Configure Apache DocumentRoot and ServerName
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf \
-    && echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql bcmath zip
 
-# Copy and setup startup script
-COPY docker/startup.sh /usr/local/bin/startup.sh
-RUN chmod +x /usr/local/bin/startup.sh
+# Expose port
+EXPOSE 8000
 
-# Expose port 80
-EXPOSE 80
+# Start Laravel server
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000} 
 
-# Start with startup script
-CMD ["/usr/local/bin/startup.sh"]
+
+
+
