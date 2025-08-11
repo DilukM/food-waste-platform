@@ -65,7 +65,9 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="{{ url('/') }}" class="text-xl font-bold text-gray-900">🌱 FoodShare</a>
+                        <a href="{{ url('/') }}" class="flex items-center">
+                            <img src="{{ asset('logo.png') }}" alt="FoodShare Logo" class="h-8 w-auto">
+                        </a>
                     </div>
                 </div>
 

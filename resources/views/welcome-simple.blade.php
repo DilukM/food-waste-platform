@@ -11,7 +11,9 @@
 <body class="bg-green-50">
     <div class="min-h-screen flex items-center justify-center">
         <div class="text-center">
-            <h1 class="text-4xl font-bold text-green-800 mb-4">🌱 FoodShare</h1>
+            <div class="flex justify-center mb-4">
+                <img src="{{ asset('logo.png') }}" alt="FoodShare Logo" class="h-16 w-auto">
+            </div>
             <p class="text-lg text-gray-600 mb-8">Reduce Food Waste, Share Abundance</p>
 
             <div class="space-x-4">
