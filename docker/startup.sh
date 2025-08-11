@@ -18,9 +18,38 @@ echo "🔄 Attempting database setup..."
 php artisan migrate --force 2>/dev/null || echo "⚠️ Migration failed - database might not be accessible"
 
 # Clear and optimize Laravel
-echo "🔧 Optimizing Laravel..."
-php artisan config:clear 2>/dev/null || echo "⚠️ Config clear failed"
-php artisan cache:clear 2>/dev/null || echo "⚠️ Cache clear failed"
+echo "🔧 Setting up Laravel application..."
+
+# Set proper permissions
+echo "📁 Setting storage permissions..."
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Create a startup log
+LOG_FILE="/var/www/html/storage/logs/startup.log"
+echo "$(date): Starting Laravel setup..." > "$LOG_FILE"
+
+# Check critical environment variables
+echo "🔍 Checking environment variables..."
+if [ -z "$APP_KEY" ]; then
+    echo "❌ ERROR: APP_KEY not set!" | tee -a "$LOG_FILE"
+    echo "Laravel will not start without APP_KEY" | tee -a "$LOG_FILE"
+else
+    echo "✅ APP_KEY is set" | tee -a "$LOG_FILE"
+fi
+
+if [ -z "$DB_HOST" ]; then
+    echo "⚠️ WARNING: DB_HOST not set!" | tee -a "$LOG_FILE"
+else
+    echo "✅ DB_HOST is set: $DB_HOST" | tee -a "$LOG_FILE"
+fi
+
+# Clear and cache Laravel configuration
+echo "⚙️ Optimizing Laravel..."
+echo "$(date): Clearing Laravel caches..." >> "$LOG_FILE"
+php artisan config:clear 2>&1 | tee -a "$LOG_FILE" || echo "⚠️ Config clear failed (may be expected)"
+php artisan cache:clear 2>&1 | tee -a "$LOG_FILE" || echo "⚠️ Cache clear failed (may be expected)"
+php artisan view:clear 2>&1 | tee -a "$LOG_FILE" || echo "⚠️ View clear failed (may be expected)"
 
 # Only cache if we have proper environment
 if [ "$APP_ENV" = "production" ] && [ -n "$APP_KEY" ]; then
