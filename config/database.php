@@ -99,12 +99,16 @@ return [
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
                 \PDO::ATTR_EMULATE_PREPARES => false,
-                // Neon-specific options
+                // Neon-specific options to fix SNI issues
                 \PDO::ATTR_TIMEOUT => 30,
                 \PDO::ATTR_PERSISTENT => false,
             ],
             // Neon PostgreSQL specific configuration
             'application_name' => env('APP_NAME', 'Laravel'),
+            // Additional Neon-specific options
+            'sslcert' => null,
+            'sslkey' => null,
+            'sslrootcert' => null,
         ],
 
         'sqlsrv' => [
