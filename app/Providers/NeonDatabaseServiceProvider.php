@@ -19,7 +19,7 @@ class NeonDatabaseServiceProvider extends ServiceProvider
                 {
                     // Get the base DSN
                     $dsn = parent::getDsn($config);
-                    
+
                     // For Neon connections, add endpoint parameter for SNI support
                     if (str_contains($config['host'] ?? '', 'neon.tech')) {
                         // Extract endpoint ID from host (first part before first dot)
@@ -29,7 +29,7 @@ class NeonDatabaseServiceProvider extends ServiceProvider
                             $dsn .= ";options=endpoint=$endpointId";
                         }
                     }
-                    
+
                     return $dsn;
                 }
             };

@@ -6,6 +6,24 @@
     },
     "routes": [
         {
+            "src": "/favicon\\.(ico|svg|png)",
+            "headers": {
+                "cache-control": "s-maxage=86400"
+            }
+        },
+        {
+            "src": "/logo\\.svg",
+            "headers": {
+                "cache-control": "s-maxage=86400"
+            }
+        },
+        {
+            "src": "/robots\\.txt",
+            "headers": {
+                "cache-control": "s-maxage=86400"
+            }
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
