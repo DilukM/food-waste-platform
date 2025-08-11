@@ -47,6 +47,11 @@ fi
 # Clear and cache Laravel configuration
 echo "⚙️ Optimizing Laravel..."
 echo "$(date): Clearing Laravel caches..." >> "$LOG_FILE"
+
+# Set cache driver to file temporarily to avoid database dependency during startup
+export CACHE_DRIVER=file
+export SESSION_DRIVER=file
+
 php artisan config:clear 2>&1 | tee -a "$LOG_FILE" || echo "⚠️ Config clear failed (may be expected)"
 php artisan cache:clear 2>&1 | tee -a "$LOG_FILE" || echo "⚠️ Cache clear failed (may be expected)"
 php artisan view:clear 2>&1 | tee -a "$LOG_FILE" || echo "⚠️ View clear failed (may be expected)"
