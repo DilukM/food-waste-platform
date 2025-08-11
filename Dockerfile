@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -6,33 +6,37 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev \
     libpq-dev \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip bcmath
+    && docker-php-ext-install pdo pdo_pgsql zip bcmath \
+    && a2enmod rewrite
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
-# Copy project files
-COPY . .
+# Copy composer files first (for better caching)
+COPY composer.json composer.lock ./
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Cache Laravel config
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+# Copy application files
+COPY . .
 
-RUN chmod -R 775 storage bootstrap/cache
+# Set up Laravel directories and permissions
+RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql bcmath zip
+# Run composer scripts
+RUN composer dump-autoload --optimize
 
-# Expose port
-EXPOSE 8000
+# Configure Apache DocumentRoot to point to Laravel's public directory
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
-# Start Laravel server
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000} 
+# Expose port 80
+EXPOSE 80
 
-
-
-
+# Start Apache
+CMD ["apache2-foreground"]
