@@ -23,8 +23,16 @@ RUN composer install --no-dev --optimize-autoloader
 # Cache Laravel config
 RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
+RUN chmod -R 775 storage bootstrap/cache
+
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql bcmath zip
+
 # Expose port
 EXPOSE 8000
 
 # Start Laravel server
 CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000} 
+
+
+
+
