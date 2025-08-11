@@ -24,6 +24,7 @@
             background: linear-gradient(135deg, #0f766e 0%, #10b981 25%, #059669 50%, #047857 75%, #064e3b 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
+            position: relative;
         }
 
         @keyframes gradientShift {
@@ -35,6 +36,44 @@
 
             50% {
                 background-position: 100% 50%;
+            }
+        }
+
+        /* Particle effect overlay */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 10s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1);
             }
         }
 
@@ -69,6 +108,235 @@
 
             50% {
                 transform: translateY(-20px);
+            }
+        }
+
+        .floating-delayed {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: -2s;
+        }
+
+        .floating-delayed-2 {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: -4s;
+        }
+
+        .pulse-slow {
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        .bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce-slow {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .rotate-slow {
+            animation: rotate-slow 20s linear infinite;
+        }
+
+        @keyframes rotate-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .slide-diagonal {
+            animation: slide-diagonal 15s ease-in-out infinite;
+        }
+
+        @keyframes slide-diagonal {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(30px, -30px);
+            }
+        }
+
+        .food-icon {
+            font-size: 2rem;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .food-icon:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        }
+
+        /* Wave animation for hero background */
+        .wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            animation: wave 8s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Breathing animation for main title */
+        .breathe {
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        /* Glow effect for stats cards */
+        .glow-on-hover {
+            transition: all 0.3s ease;
+        }
+
+        .glow-on-hover:hover {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* Twinkling stars effect */
+        .twinkle {
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.3;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Circular lines animations */
+        .circular-line {
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: absolute;
+            animation: spin-slow 20s linear infinite;
+        }
+
+        .circular-line-reverse {
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: absolute;
+            animation: spin-reverse 15s linear infinite;
+        }
+
+        .circular-line-pulse {
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.06);
+            position: absolute;
+            animation: circular-pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes circular-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        /* Dashed circular lines */
+        .circular-dashed {
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.12);
+            position: absolute;
+            animation: dash-rotate 12s linear infinite;
+        }
+
+        @keyframes dash-rotate {
+            from {
+                transform: rotate(0deg);
+                stroke-dashoffset: 0;
+            }
+            to {
+                transform: rotate(360deg);
+                stroke-dashoffset: 100;
+            }
+        }
+
+        /* Gradient circular lines */
+        .circular-gradient {
+            border-radius: 50%;
+            position: absolute;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: gradient-spin 10s linear infinite;
+        }
+
+        .circular-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0f766e 0%, #10b981 25%, #059669 50%, #047857 75%, #064e3b 100%);
+        }
+
+        @keyframes gradient-spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
             }
         }
 
@@ -116,7 +384,7 @@
                             <!-- Pure Donor Navigation - Only show View as Recipient button -->
                             <a href="{{ route('donations.index') }}"
                                 class="glass-card hover:bg-white hover:bg-opacity-80 text-blue-600 hover:text-blue-700 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 backdrop-blur-md border border-white border-opacity-30 shadow-lg inline-flex items-center">
-                                <span class="mr-2">👁️</span>
+                                
                                 View as Recipient
                             </a>
                         @endif
@@ -173,22 +441,68 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center gradient-bg hero-pattern">
+        <!-- Wave Effect -->
+        <div class="wave"></div>
+        
+        <!-- Particle Effect -->
+        <div class="particles" id="particles"></div>
+
         <!-- Gradient Overlay -->
         {{-- <div class="absolute inset-0 bg-gradient-to-br from-transparent via-green-900/20 to-emerald-900/40"></div> --}}
 
         <!-- Background decorations -->
         <div class="absolute inset-0 overflow-hidden">
+            <!-- Animated gradient circles -->
             <div
                 class="absolute top-1/4 left-10 w-72 h-72 bg-white opacity-5 rounded-full mix-blend-multiply filter blur-xl floating">
             </div>
             <div
-                class="absolute top-1/3 right-10 w-72 h-72 bg-green-200 opacity-10 rounded-full mix-blend-multiply filter blur-xl floating">
+                class="absolute top-1/3 right-10 w-72 h-72 bg-green-200 opacity-10 rounded-full mix-blend-multiply filter blur-xl floating-delayed">
             </div>
+            <div
+                class="absolute bottom-1/4 left-1/3 w-48 h-48 bg-emerald-300 opacity-8 rounded-full mix-blend-multiply filter blur-xl floating-delayed-2">
+            </div>
+
+            <!-- Floating food icons -->
+            <div class="absolute top-20 left-20 food-icon bounce-slow">🍎</div>
+            <div class="absolute top-32 right-32 food-icon floating-delayed">🥖</div>
+            <div class="absolute bottom-40 left-16 food-icon slide-diagonal">🥬</div>
+            <div class="absolute top-1/2 right-20 food-icon floating">🍌</div>
+            <div class="absolute bottom-20 right-1/4 food-icon bounce-slow">🥕</div>
+            <div class="absolute top-40 left-1/2 food-icon floating-delayed-2">🍅</div>
+            <div class="absolute bottom-1/3 left-1/4 food-icon slide-diagonal">🥔</div>
+            <div class="absolute top-1/3 left-1/3 food-icon floating-delayed">🍊</div>
+
+            <!-- Animated circles with different sizes -->
+            <div class="absolute top-16 right-16 w-8 h-8 bg-green-400 opacity-20 rounded-full pulse-slow"></div>
+            <div class="absolute bottom-32 left-32 w-12 h-12 bg-emerald-300 opacity-15 rounded-full pulse-slow" style="animation-delay: -1s;"></div>
+            <div class="absolute top-1/2 left-16 w-6 h-6 bg-green-500 opacity-25 rounded-full pulse-slow" style="animation-delay: -2s;"></div>
+            <div class="absolute bottom-16 right-40 w-10 h-10 bg-teal-400 opacity-20 rounded-full pulse-slow" style="animation-delay: -3s;"></div>
+
+            <!-- Rotating decorative elements -->
+            <div class="absolute top-24 right-1/4 w-16 h-16 border-2 border-green-300 opacity-20 rounded-full rotate-slow"></div>
+            <div class="absolute bottom-24 left-1/3 w-20 h-20 border border-emerald-400 opacity-15 rounded-full rotate-slow" style="animation-delay: -10s; animation-direction: reverse;"></div>
+
+            <!-- Additional geometric shapes -->
+            <div class="absolute top-1/4 right-1/3 w-4 h-4 bg-green-400 opacity-30 transform rotate-45 floating"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-3 h-3 bg-emerald-500 opacity-25 transform rotate-45 floating-delayed"></div>
+            <div class="absolute top-2/3 left-20 w-5 h-5 bg-teal-400 opacity-20 transform rotate-45 floating-delayed-2"></div>
+
+            <!-- Twinkling stars -->
+            <div class="absolute top-12 left-1/4 w-2 h-2 bg-white opacity-60 rounded-full twinkle"></div>
+            <div class="absolute top-24 right-1/3 w-1 h-1 bg-white opacity-80 rounded-full twinkle" style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-32 left-1/2 w-1.5 h-1.5 bg-white opacity-70 rounded-full twinkle" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 right-12 w-2 h-2 bg-white opacity-50 rounded-full twinkle" style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-16 left-12 w-1 h-1 bg-white opacity-90 rounded-full twinkle" style="animation-delay: 2s;"></div>
+
+            <!-- Subtle Circular Lines (reduced) -->
+            <div class="circular-line top-20 left-20 w-64 h-64"></div>
+            <div class="circular-line-reverse bottom-20 right-20 w-48 h-48" style="animation-delay: -10s;"></div>
         </div>
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="text-center">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight breathe">
                     Reduce Food Waste,<br>
                     <span class="text-green-700">Share Abundance</span>
                 </h1>
@@ -225,17 +539,17 @@
                 <!-- Stats -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                     <div
-                        class="bg-gradient-to-br from-green-500 to-green-700 backdrop-blur-md rounded-xl p-6 text-center hover-scale transition-transform duration-300 border border-white border-opacity-30 shadow-lg">
+                        class="bg-gradient-to-br from-green-500 to-green-700 backdrop-blur-md rounded-xl p-6 text-center hover-scale transition-transform duration-300 border border-white border-opacity-30 shadow-lg glow-on-hover">
                         <div class="text-3xl font-bold text-white mb-2">40%</div>
                         <div class="text-white">of food is wasted globally</div>
                     </div>
                     <div
-                        class="bg-gradient-to-br from-green-600 to-green-800 backdrop-blur-md rounded-xl p-6 text-center hover-scale transition-transform duration-300 border border-white border-opacity-30 shadow-lg">
+                        class="bg-gradient-to-br from-green-600 to-green-800 backdrop-blur-md rounded-xl p-6 text-center hover-scale transition-transform duration-300 border border-white border-opacity-30 shadow-lg glow-on-hover">
                         <div class="text-3xl font-bold text-white mb-2">828M</div>
                         <div class="text-white">people face hunger worldwide</div>
                     </div>
                     <div
-                        class="bg-gradient-to-br from-green-500 to-emerald-700 backdrop-blur-md rounded-xl p-6 text-center hover-scale transition-transform duration-300 border border-white border-opacity-30 shadow-lg">
+                        class="bg-gradient-to-br from-green-500 to-emerald-700 backdrop-blur-md rounded-xl p-6 text-center hover-scale transition-transform duration-300 border border-white border-opacity-30 shadow-lg glow-on-hover">
                         <div class="text-3xl font-bold text-white mb-2">Together</div>
                         <div class="text-white">we can make a difference</div>
                     </div>
@@ -363,6 +677,88 @@
     </footer>
 
     <script>
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random horizontal position
+                particle.style.left = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                
+                // Random animation duration
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                // Random size
+                const size = Math.random() * 3 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Floating food icons interaction
+        function addFoodIconInteraction() {
+            const foodIcons = document.querySelectorAll('.food-icon');
+            
+            foodIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    icon.style.transform = 'scale(1.5) rotate(15deg)';
+                    icon.style.transition = 'transform 0.3s ease';
+                });
+                
+                icon.addEventListener('mouseleave', () => {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+        }
+
+        // Parallax effect for background elements
+        function addParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.floating, .floating-delayed, .floating-delayed-2');
+                
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        }
+
+        // Random color animation for geometric shapes
+        function animateGeometricShapes() {
+            const shapes = document.querySelectorAll('[class*="transform rotate-45"]');
+            const colors = ['bg-green-400', 'bg-emerald-500', 'bg-teal-400', 'bg-green-500', 'bg-emerald-400'];
+            
+            setInterval(() => {
+                shapes.forEach(shape => {
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    shape.className = shape.className.replace(/bg-\w+-\d+/, randomColor);
+                });
+            }, 3000);
+        }
+
+        // Interactive circular lines (simplified)
+        function addCircularLinesInteraction() {
+            const circularLines = document.querySelectorAll('.circular-line, .circular-line-reverse');
+            
+            // Simple opacity animation for circular lines
+            setInterval(() => {
+                circularLines.forEach(line => {
+                    const randomOpacity = Math.random() * 0.15 + 0.05;
+                    line.style.borderColor = `rgba(255, 255, 255, ${randomOpacity})`;
+                });
+            }, 4000);
+        }
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -375,6 +771,15 @@
                     });
                 }
             });
+        });
+
+        // Initialize all animations when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            addFoodIconInteraction();
+            addParallaxEffect();
+            animateGeometricShapes();
+            addCircularLinesInteraction();
         });
     </script>
 </body>

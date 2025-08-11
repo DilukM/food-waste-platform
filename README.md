@@ -1,61 +1,260 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🍽️ FoodShare - Food Waste Reduction Platform
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <img src="public/logo.svg" alt="FoodShare Logo" width="200">
 </p>
 
-## About Laravel
+<p align="center">
+    <strong>A Laravel-based platform connecting food donors with those in need to reduce food waste</strong>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+    <a href="https://foodshare-mu.vercel.app/" target="_blank">🌐 Live Demo</a> •
+    <a href="#features">✨ Features</a> •
+    <a href="#installation">🚀 Installation</a> •
+    <a href="#tech-stack">🛠️ Tech Stack</a>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📖 About
 
-## Learning Laravel
+**FoodShare** is a web application designed to tackle food waste by creating a bridge between food donors (restaurants, grocery stores, individuals) and recipients (food banks, shelters, individuals in need). The platform enables users to post available food donations and allows others to request them, fostering community collaboration while reducing environmental impact.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🎯 Mission
+To reduce food waste and fight hunger in communities by facilitating easy food sharing between donors and recipients.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ✨ Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔐 User Management
+- **User Registration & Authentication** - Secure account creation and login
+- **Role-based Access** - Different permissions for donors and recipients
+- **Profile Management** - Update personal information and preferences
 
-## Laravel Sponsors
+### 🍔 Donation Management
+- **Create Donations** - Post available food with details like category, quantity, and expiration
+- **Browse Donations** - Search and filter available food donations
+- **Donation Status Tracking** - Track the status of your donations (available, requested, completed)
+- **Categories** - Organize food by type (vegetables, fruits, prepared meals, etc.)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 📝 Request System
+- **Request Food** - Submit requests for specific donations with messages
+- **Request Management** - View and manage your food requests
+- **Status Updates** - Track request status (pending, approved, declined)
+- **Communication** - Message system between donors and recipients
 
-### Premium Partners
+### 📊 Dashboard
+- **Donor Dashboard** - Manage your donations and incoming requests
+- **Recipient Dashboard** - Track your requests and browse available food
+- **Analytics** - View impact statistics and donation history
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🔒 Security & Compliance
+- **SSL Encryption** - Secure data transmission
+- **Input Validation** - Protection against malicious inputs
+- **Authentication** - Laravel Breeze for secure user management
 
-## Contributing
+## 🛠️ Tech Stack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Backend
+- **Framework**: Laravel 12.x (PHP 8.2+)
+- **Database**: PostgreSQL (Neon Database)
+- **Authentication**: Laravel Breeze
+- **Validation**: Laravel Form Requests
+- **Testing**: PHPUnit with Pest
 
-## Code of Conduct
+### Frontend
+- **CSS Framework**: Tailwind CSS
+- **Build Tool**: Vite
+- **JavaScript**: Vanilla JS with modern ES6+ features
+- **Templating**: Blade (Laravel's templating engine)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Infrastructure & Deployment
+- **Hosting**: Vercel (Production)
+- **Database**: Neon PostgreSQL (Cloud)
+- **Local Development**: XAMPP
+- **Version Control**: Git
 
-## Security Vulnerabilities
+### Additional Tools
+- **Package Manager**: Composer (PHP), NPM (Node.js)
+- **Code Quality**: Laravel Pint (PHP CS Fixer)
+- **Environment Management**: Laravel .env configuration
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🚀 Installation
 
-## License
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js & NPM
+- PostgreSQL database (or use provided Neon database)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Local Development Setup
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/DilukM/food-waste-platform.git
+cd food-waste-platform
+```
+
+2. **Install PHP dependencies**
+```bash
+composer install
+```
+
+3. **Install Node.js dependencies**
+```bash
+npm install
+```
+
+4. **Environment Setup**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+5. **Configure Database**
+Edit `.env` file with your database credentials:
+```env
+DB_CONNECTION=pgsql
+DB_HOST=your-database-host
+DB_PORT=5432
+DB_DATABASE=your-database-name
+DB_USERNAME=your-username
+DB_PASSWORD=your-password
+```
+
+6. **Run Migrations**
+```bash
+php artisan migrate
+```
+
+7. **Seed Database (Optional)**
+```bash
+php artisan db:seed
+```
+
+8. **Build Assets**
+```bash
+npm run build
+```
+
+9. **Start Development Server**
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`
+
+### Production Deployment (Vercel)
+
+1. **Configure vercel.json**
+The project includes a pre-configured `vercel.json` for deployment.
+
+2. **Deploy to Vercel**
+```bash
+vercel --prod
+```
+
+3. **Environment Variables**
+Set the following environment variables in Vercel dashboard:
+- Database credentials
+- APP_KEY
+- APP_URL
+- Any other required environment variables
+
+## 📁 Project Structure
+
+```
+food-waste-platform/
+├── app/
+│   ├── Http/Controllers/     # Application controllers
+│   ├── Models/              # Eloquent models
+│   ├── Providers/           # Service providers
+│   └── ...
+├── database/
+│   ├── migrations/          # Database migrations
+│   └── seeders/            # Database seeders
+├── public/                 # Public assets
+├── resources/
+│   ├── css/               # Stylesheets
+│   ├── js/                # JavaScript files
+│   └── views/             # Blade templates
+├── routes/                # Application routes
+├── config/                # Configuration files
+├── storage/               # File storage
+├── tests/                 # Application tests
+├── .env.example          # Environment variables template
+├── composer.json         # PHP dependencies
+├── package.json          # Node.js dependencies
+├── vercel.json           # Vercel deployment config
+└── README.md             # This file
+```
+
+## 🎮 Usage
+
+### For Donors
+1. **Register/Login** to your account
+2. **Create a Donation** by providing food details
+3. **Manage Requests** from recipients
+4. **Update Status** when food is collected
+
+### For Recipients
+1. **Register/Login** to your account
+2. **Browse Available Food** using filters
+3. **Submit Requests** for needed items
+4. **Track Request Status** in your dashboard
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+- Follow PSR-12 coding standards
+- Write tests for new features
+- Update documentation as needed
+- Use meaningful commit messages
+
+## 🧪 Testing
+
+Run the test suite:
+```bash
+./vendor/bin/pest
+```
+
+Or with PHPUnit:
+```bash
+./vendor/bin/phpunit
+```
+
+## 📝 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 👥 Team
+
+- **Developer**: [DilukM](https://github.com/DilukM)
+
+## 🙏 Acknowledgments
+
+- Laravel community for the amazing framework
+- Neon Database for reliable PostgreSQL hosting
+- Vercel for seamless deployment
+- Tailwind CSS for beautiful styling
+- All contributors and users who help reduce food waste
+
+## 📞 Support
+
+If you encounter any issues or have questions:
+- Create an [Issue](https://github.com/DilukM/food-waste-platform/issues)
+- Contact: dilukedu@gmail.com
+
+---
+
+<p align="center">
+    <strong>Together, we can reduce food waste and build stronger communities! 🌱</strong>
+</p>
