@@ -95,7 +95,7 @@
     <!-- Main Content -->
     <section class="relative min-h-screen gradient-bg hero-pattern flex items-center justify-center">
         <div class="relative max-w-md w-full mx-auto px-4 sm:px-6 lg:px-8">
-           
+
 
             <!-- Login Card -->
             <div class="glass-card rounded-2xl shadow-xl p-8">

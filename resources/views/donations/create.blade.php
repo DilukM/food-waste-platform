@@ -70,7 +70,7 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <a href="{{ url('/') }}" class="flex items-center">
-                            <img src="{{ asset('logo.png') }}" alt="FoodShare Logo" class="h-8 w-auto">
+                            <img src="{{ asset('logo.svg') }}" alt="FoodShare Logo" class="h-8 w-auto">
                         </a>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
     <!-- Hero Section -->
     <section class="relative min-h-screen gradient-bg hero-pattern">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
-       
+
 
             <!-- Success/Error Messages -->
             @if (session('status'))

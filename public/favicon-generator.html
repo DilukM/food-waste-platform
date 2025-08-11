@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Favicon Generator</title>
+        <style>
+            canvas {
+                border: 1px solid #ccc;
+            }
+            .favicon-preview {
+                display: inline-block;
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Food Share Favicon Generator</h1>
+        <canvas id="favicon" width="32" height="32"></canvas>
+        <br /><br />
+        <button onclick="generateFavicon()">Generate Food Share Favicon</button>
+        <button onclick="downloadFavicon()">Download as ICO</button>
+
+        <div id="preview"></div>
+
+        <script>
+            const canvas = document.getElementById("favicon");
+            const ctx = canvas.getContext("2d");
+
+            function generateFavicon() {
+                // Clear canvas
+                ctx.clearRect(0, 0, 32, 32);
+
+                // Background - Green for eco-friendly
+                ctx.fillStyle = "#22c55e";
+                ctx.fillRect(0, 0, 32, 32);
+
+                // Add a leaf emoji effect using shapes
+                ctx.fillStyle = "#16a34a";
+                ctx.beginPath();
+                ctx.ellipse(16, 16, 12, 8, Math.PI / 6, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Add highlight
+                ctx.fillStyle = "#84cc16";
+                ctx.beginPath();
+                ctx.ellipse(13, 13, 6, 4, Math.PI / 6, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Add text "FS" for Food Share
+                ctx.fillStyle = "white";
+                ctx.font = "bold 14px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText("🌱", 16, 20);
+            }
+
+            function downloadFavicon() {
+                // Convert canvas to blob and download
+                canvas.toBlob(function (blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "favicon.png";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            }
+
+            // Generate initial favicon
+            generateFavicon();
+        </script>
+    </body>
+</html>

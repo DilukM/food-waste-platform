@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Green background with rounded corners -->
+  <rect fill="#22c55e" width="32" height="32" rx="4"/>
+  
+  <!-- Plant/leaf emoji -->
+  <text x="16" y="22" text-anchor="middle" fill="white" font-size="16" font-family="Arial, sans-serif">🌱</text>
+</svg>

@@ -12,7 +12,7 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="text-center">
             <div class="flex justify-center mb-4">
-                <img src="{{ asset('logo.png') }}" alt="FoodShare Logo" class="h-16 w-auto">
+                <img src="{{ asset('logo.svg') }}" alt="FoodShare Logo" class="h-16 w-auto">
             </div>
             <p class="text-lg text-gray-600 mb-8">Reduce Food Waste, Share Abundance</p>
 

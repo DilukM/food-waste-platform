@@ -94,7 +94,7 @@
     <!-- Main Content -->
     <section class="relative min-h-screen gradient-bg hero-pattern flex items-center justify-center py-20">
         <div class="relative max-w-lg w-full mx-auto px-4 sm:px-6 lg:px-8">
-         
+
 
             <!-- Registration Card -->
             <div class="glass-card rounded-2xl shadow-xl p-8">

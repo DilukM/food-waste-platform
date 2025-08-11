@@ -70,7 +70,7 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <a href="{{ url('/') }}" class="flex items-center">
-                            <img src="{{ asset('logo.png') }}" alt="FoodShare Logo" class="h-8 w-auto">
+                            <img src="{{ asset('logo.svg') }}" alt="FoodShare Logo" class="h-8 w-auto">
                         </a>
                     </div>
                 </div>
@@ -255,7 +255,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="col-span-1 md:col-span-2">
                     <h3 class="text-lg font-semibold text-white mb-4">🌱 FoodShare</h3>
-                    <p class="text-gray-300 mb-4">Connecting communities to reduce food waste and share abundance. Every
+                    <p class="text-gray-300 mb-4">Connecting communities to reduce food waste and share abundance.
+                        Every
                         meal shared is a step towards a more sustainable future.</p>
                 </div>
 

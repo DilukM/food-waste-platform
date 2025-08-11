@@ -1,1 +1,1 @@
-<img src="{{ asset('logo.png') }}" alt="FoodShare Logo" {{ $attributes->merge(['class' => 'h-9 w-auto']) }} />
+<img src="{{ asset('logo.svg') }}" alt="FoodShare Logo" {{ $attributes->merge(['class' => 'h-9 w-auto']) }} />

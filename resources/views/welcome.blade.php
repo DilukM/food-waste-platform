@@ -91,7 +91,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img src="{{ asset('logo.png') }}" alt="FoodShare Logo" class="h-8 w-auto">
+                        <img src="{{ asset('logo.svg') }}" alt="FoodShare Logo" class="h-8 w-auto">
                     </div>
                 </div>
 
